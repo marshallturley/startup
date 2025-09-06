@@ -1,5 +1,7 @@
 # CS 260 Notes
 
+I've never really understood Github but now that I am learning about what it does, I think it's actually really cool and could be beneficial in the future.
+
 [My startup - Simon](https://simon.cs260.click)
 
 ## Helpful links
