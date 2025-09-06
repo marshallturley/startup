@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-A brief description of the application here. I don't know what my startup will focus on quite yet but I am excited to use Github and learn new programming skills over the next few months.
+A brief description of the application here. I don't know what my startup will focus on quite yet but I am excited to use Github and learn new programming skills over the next few months. I think I will really enjoy the content of this class and hope I can use the skills I learn in many different ways.
 
 
 > [!NOTE]
