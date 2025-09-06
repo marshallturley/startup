@@ -2,6 +2,8 @@
 
 I've never really understood Github but now that I am learning about what it does, I think it's actually really cool and could be beneficial in the future.
 
+These notes can be used on any exam or assignment throughout the semester. Remember to use git add, then git commit -m to type the commit comment, then push everything back to the repository in git hub.
+
 [My startup - Simon](https://simon.cs260.click)
 
 ## Helpful links
