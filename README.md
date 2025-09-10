@@ -26,37 +26,66 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Do you need a little extra push to meet your fitness goals? With the FitnessBuddy app, you can create challenges and log your workouts to see the progress you make along the way. You can even compete in exercise challenges with your friends in real time to see who is the best!
 
 ### Design
 
-![Design image](placeholder.png)
+Initial sketches for each page supported in the app:
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+#### Login/Register
+![Login sketch](./sketches/Login.jpeg)
+
+#### Dashboard
+![Dashboard sketch](./sketches/Dashboard.jpeg)
+
+#### Log Workout
+![Log workout sketch](./sketches/LogWorkout.jpeg)
+
+#### Leaderboard
+![Leaderboard sketch](./sketches/Leaderboard.jpeg)
+
+#### Sequence Diagram
+The diagram below shows the basic flow of how a user logs a workout. The user enters workout details in the frontend, which are then sent to the backend service. The backend saves the workout in the database and returns a confirmation, allowing the frontend to update the user’s dashboard with the new data.
 
 ```mermaid
 sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
+    actor User
+    participant FE as Frontend (React)
+    participant BE as Backend (Service/DB)
+
+    User ->> FE: Log workout
+    FE ->> BE: POST /addWorkout
+    BE ->> BE: Save workout to DB
+    BE -->> FE: Workout saved
+    FE -->> User: Update dashboard
 ```
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Secure login over HTTPS
+- Ability to log workout with detailed information
+- Create and join personal or group challenges
+- Real-time leaderboard updates with each workout completed by your friends
+- Dashboard displays progress as users log more workouts
+- Current weather displays help users plan outdoor workouts
+- Exercise data and user accounts are persistently stored
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Four different HTML pages for login, dashboard, workout logs, and leaderboard.
+- **CSS** - Visually appealing pages that use good color choice and sizing to display leaderboards and other stats associated with the workout logs.
+- **React** - Provides login, displays dashboard and leaderboard, logs workouts, displays weather, and handles navigation between pages.
+- **Service** - Backend endpoints include:
+    - Login
+    - Workout logs
+    - Obtaining third party weather information
+    - Fetching leaderboard results
+- **DB/Login** - Store users, workouts, and stats in a secure manner.
+- **WebSocket** - Push real-time updates for:
+    - Logged Workouts
+    - Leaderboard Changes
 
 ## 🚀 AWS deliverable
 
