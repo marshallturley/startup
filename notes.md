@@ -14,8 +14,8 @@ These notes can be used on any exam or assignment throughout the semester. Remem
 
 ## AWS
 
-My IP address is: 54.81.96.130
-Launching my AMI I initially put it on a private subnet. Even though it had a public IP address and the security group was right, I wasn't able to connect to it.
+My public IP address is: 13.223.6.194
+My instance is on the US-east-1 server, which is based in N. Virginia. The instance type I am using is the t3.micro version. In order to keep the same public IP address, you must never stop your server (Amazon doesn't charge you for when it's stopped), or assign an elastic IP address to your server so it can keep the same IP even when it's stopped.
 
 ## Caddy
 
