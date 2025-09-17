@@ -15,11 +15,11 @@ These notes can be used on any exam or assignment throughout the semester. Remem
 ## AWS
 
 My public IP address is: 13.223.6.194
-My instance is on the US-east-1 server, which is based in N. Virginia. The instance type I am using is the t3.micro version. In order to keep the same public IP address, you must never stop your server (Amazon doesn't charge you for when it's stopped), or assign an elastic IP address to your server so it can keep the same IP even when it's stopped.
+My instance is on the US-east-1 server, which is based in N. Virginia. The instance type I am using is the t3.micro version. In order to keep the same public IP address, you must never stop your server (Amazon doesn't charge you for when it's stopped), or assign an elastic IP address to your server so it can keep the same IP even when it's stopped. My domain is turley260.me, which I got from namecheap instead of Amazon Route 53. The A record type is what we used, and I connected the domain name to my already existing elastic IP. 
 
 ## Caddy
 
-No problems worked just like it said in the [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
+Caddy worked smoothly and now my turley260.me website has a secure connection whenever it is visited. I had to go into the secure shell on my GitBash console, and Ubuntu had Caddy previously installed. It was super simple to go in and get the secure connection going. It should support my root website, as well as the simon and startup subroot websites.
 
 ## HTML
 
