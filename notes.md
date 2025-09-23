@@ -23,9 +23,9 @@ Caddy worked smoothly and now my turley260.me website has a secure connection wh
 
 ## HTML
 
-This was easy. I was careful to use the correct structural elements such as header, footer, main, nav, and form. The links between the three views work great using the `a` element.
+I am slightly overwhelmed at the amount of different elements there are, but it is nice to have the little list from the GitHub instruction page. When linking images from other websites, I learned some are blocked, so I had to use Wikimedia commons to find the logo I wanted to use. 
 
-The part I didn't like was the duplication of the header and footer code. This is messy, but it will get cleaned up when I get to React.
+The inputs section was also slightly overwhelming with the high number of different input types and each one's syntax, but I feel like I am getting slightly better at using HTML. One thing to remember is the color hex number, and how it ALWAYS needs to start with #. 
 
 ## CSS
 
