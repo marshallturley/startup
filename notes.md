@@ -27,6 +27,8 @@ I am slightly overwhelmed at the amount of different elements there are, but it 
 
 The inputs section was also slightly overwhelming with the high number of different input types and each one's syntax, but I feel like I am getting slightly better at using HTML. One thing to remember is the color hex number, and how it ALWAYS needs to start with #. 
 
+I used the different HTML elements to make 4 different pages for my startup application. WebSocket is used to provide realtime updates (like a leaderboard that updates as new data is added), database is used to store information/data, and 3rd party API is used to pull something someone else has already created into your own website (weather updates). 
+
 ## CSS
 
 This took a couple hours to get it how I wanted. It was important to make it responsive and Bootstrap helped with that. It looks great on all kinds of screen sizes.

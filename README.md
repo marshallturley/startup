@@ -81,21 +81,21 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [X] **Server deployed and accessible with custom domain name** - [My server link](https://turley260.me). I registered this domain, and used it to replace my elastic IP address.
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [X] **HTML pages** - I made four separate HTML pages for this startup application. The pages are: Login, Dashboard, New Workout, Leaderboard.
+- [X] **Proper HTML element usage** - I used many different HTML element tags, such as header, main, body, footer, section, etc.
+- [X] **Links** - I have three of the pages linked clearly in the navigation section of each page. The new workout page is designed to only be accessible from the dashboard page. 
+- [X] **Text** - I clearly and concisely described the function of each of my pages, and the function of each of my placeholders.
+- [X] **3rd party API placeholder** - I included my 3rd party placeholder on the dashboard page, as that is where I will be displaying the weather information that is pulled from the 3rd party.
+- [X] **Images** - I added little clipart images of a dumbbell on the new workout log page, and of a trophy on the leaderboard page.
+- [X] **Login placeholder** - There is a clear login feature using a username and password that will be inputted from the User.
+- [X] **DB data placeholder** - I included the database placeholder on my dashboard page, where it will be used to show the total number of workouts completed by the user.
+- [X] **WebSocket placeholder** - I included the WebSocket placeholder on the leaderboard page, as I will be pulling the workout statistics in real time to rank and display on the leaderboard.
 
 ## 🚀 CSS deliverable
 
