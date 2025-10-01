@@ -101,12 +101,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [X] **Header, footer, and main content body** - I made a stardard style for the header, body, and footer that I used for each page of my startup. The header and footer both are a forest green color, with white text, while the main body section is a light gray color.
+- [X] **Navigation elements** - I have three links that are consistently in the navigation area of the header. These links take the user to the login page, the dashboard page, and the leaderboard page.
+- [X] **Responsive to window resizing** - I used flexbox to make my header and footer consistent heights, even when the window size is adjusted. I set a minimum width for the window, but not a minimum height. Some of the features on the pages (such as text input boxes) even resize when the size of the window is changed.
+- [X] **Application elements** - I included a variety of application elements, such as input fields, buttons, navigation links, and others. Each of these is styled in a way where they look good and function properly.
+- [X] **Application text content** - I styled my pages in a way where all of the text looks visually pleasing. I made sure to make text color white on the darker backgrounds I used, and the text looks like the font is consistent across all of the pages.
+- [X] **Application images** - I have two images included throughout the website, with each one centered and spaced nicely. I made sure to use images with transparent backgrounds so the image would look good even when positioned on a colored background.
 
 ## 🚀 React part 1: Routing deliverable
 

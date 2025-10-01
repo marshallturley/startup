@@ -31,48 +31,24 @@ I used the different HTML elements to make 4 different pages for my startup appl
 
 ## CSS
 
-This took a couple hours to get it how I wanted. It was important to make it responsive and Bootstrap helped with that. It looks great on all kinds of screen sizes.
+I love bootstrap. It makes styling the page effortless with the short commands that handle everything from margins to alignment. If you want CSS file commands to override the bootstrap commands, you must put "!important" so that the computer knows what to do. Although styling my startup longer than I anticipated, I feel like I have a real understanding of how it works and which commands are most important to know. 
 
-Bootstrap seems a bit like magic. It styles things nicely, but is very opinionated. You either do, or you do not. There doesn't seem to be much in between.
+My navbar looks amazing all due to this code I put in the header:
+'''<header class="border-bottom">
+                <h1 class="text-center pt-4 text-white"><b>FitnessBuddy</b></h1>
+            <nav>
+                <menu class="nav justify-content-center">
+                    <li><a href="index.html" class="nav-link link-dark text-white">Login</a></li>
+                    <li><a href="dashboard.html" class="nav-link link-dark text-white">Dashboard</a></li>
+                    <li><a href="leaderboard.html" class="nav-link link-dark text-white">Leaderboard</a></li>
+                </menu>
+            </nav>
+        </header>
+'''
 
-I did like the navbar it made it super easy to build a responsive header.
-
-```html
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand">
-            <img src="logo.svg" width="30" height="30" class="d-inline-block align-top" alt="" />
-            Calmer
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" href="play.html">Play</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Logout</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-```
-
-I also used SVG to make the icon and logo for the app. This turned out to be a piece of cake.
-
-```html
-<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100" height="100" fill="#0066aa" rx="10" ry="10" />
-  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-size="72" font-family="Arial" fill="white">C</text>
-</svg>
-```
+This is the proper link to be able to access the bootstrap commands:
+'''<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+'''
 
 ## React Part 1: Routing
 
