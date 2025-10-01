@@ -1,0 +1,42 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+}
+
+header {
+    flex: 0 0 80px;
+    background-color: #228B22;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #d3d3d3;
+}
+
+.table {
+    width:70%;
+    text-align: center;
+}
+
+.tab-head {
+    background-color:#228B22;
+    color: white;
+}
+
+footer {
+    flex: 0 0 35px;
+    background-color: #228B22;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
