@@ -112,9 +112,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [X] **Bundled using Vite** - I used "npm create vite@latest" to initialize Vite, and used "npm run dev" to test and debug my pages as I worked.
+- [X] **Components** - I turned each of my four webpages into React components. Each page imports the proper CSS file into it which allows for the formatting to look good and consistent. Each major page exist as components within the main src directory.
+- [X] **Router** - I used React Router to deal with the navigation between pages of my app. I defined the proper Routes within App.jsx that allowed for the navigation to run smoothly.
 
 ## 🚀 React part 2: Reactivity deliverable
 

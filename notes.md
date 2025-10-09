@@ -52,7 +52,7 @@ This is the proper link to be able to access the bootstrap commands:
 
 ## React Part 1: Routing
 
-Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS. This isn't as straight forward as you would find with Svelte or Vue, but I made it work in the end. If there was a ton of CSS it would be a real problem. It sure was nice to have the code structured in a more usable way.
+Using React was very interesting. It makes things much more condensed and simple, but it rquired me to change a lot of the tags and code that I had previously written, which was inconvinient. After changing everything and making it compatible with React, the website works great and will hopefully work well with the future changes I make to it.
 
 ## React Part 2: Reactivity
 
