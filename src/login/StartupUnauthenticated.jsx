@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import { MessageDialog } from './messaggeDialog';
+import { MessageDialog } from './messageDialog';
 
 export function StartupUnauthenticated({ onLogin }) {
-        const [username, setUsername] = React.useState(propTypes.userName);
+        const [userName, setUsername] = React.useState(propTypes.userName);
         const [password, setPassword] = React.useState('');
         const [displayError, setDisplayError] = React.useState(null);
 
@@ -27,8 +27,8 @@ export function StartupUnauthenticated({ onLogin }) {
                 <div>
                     <input type="password" id="password" placeholder="Password" className="inputs my-2" onChange={(e) => setPassword(e.target.value)}/>
                 </div>
-                <button onClick={() => loginUser()} className="btn btn-outline-dark m-2">Login</button>
-                <button onClick={() => createUser()} className="btn btn-outline-dark m-2">Register</button>
+                <Button type="button" onClick={() => loginUser()} className="btn btn-outline-dark m-2" disabled={!userName || !password}>Login</Button>
+                <Button type="button" onClick={() => createUser()} className="btn btn-outline-dark m-2" disabled={!userName || !password}>Register</Button>
             </form>
             <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
         </main>
