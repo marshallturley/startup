@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './leaderboard.css'
 
 export function Leaderboard() {
+    const [leaderboard, setLeaderboard] = useState([]);
+
+    useEffect(() => {
+        const allWorkouts = JSON.parse(localStorage.getItem('workouts')) || [];
+        
+        const userStats = {};
+        allWorkouts.forEach(w => {
+            const user = w.userName || 'Unknown';
+            if (!userStats[user]) {
+                userStats[user] = { totalWorkouts: 0, totalTime: 0 };
+            }
+            userStats[user].totalWorkouts += 1;
+            userStats[user].totalTime += Number(w.duration) || 0;
+        })
+
+        const sortedLeaderboard = Object.entries(userStats)
+            .map(([userName, stats]) => ({ userName, ...stats}))
+            .sort((a,b) => b.totalWorkouts - a.totalWorkouts);
+
+        setLeaderboard(sortedLeaderboard);
+    }, []);
+
   return (
     <main className="justify-content-start">
         <h2 className="mt-3">Top FitnessBuddy Users</h2>
         <img src="https://freesvg.org/img/1297919410.png" alt="trophy" height="150" width="150" />
-        <p className="text-center my-3">Below is a placeholder for the leaderboard that will use WebSocket to provide real time updates as new workouts are logged.</p>
+        <p className="text-center my-3">Leaderboard dynamically generated from workouts logged by users.</p>
 
         <table className="table table-striped table-bordered text-center my-2">
             <thead className="tab-head">
@@ -18,13 +40,15 @@ export function Leaderboard() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>User1</td>
-                    <td>7</td>
-                    <td>280</td>
+                {leaderboard.map((user,index) => (
+                <tr key={user.userName}>
+                    <td>{index + 1}</td>
+                    <td>{user.userName}</td>
+                    <td>{user.totalWorkouts}</td>
+                    <td>{user.totalTime}</td>
                 </tr>
-                <tr>
+                ))}
+                {/* <tr>
                     <td>2</td>
                     <td>User2</td>
                     <td>4</td>
@@ -35,7 +59,7 @@ export function Leaderboard() {
                     <td>User3</td>
                     <td>1</td>
                     <td>30</td>
-                </tr>
+                </tr> */}
             </tbody>
         </table>
     </main>

@@ -18,8 +18,11 @@ export function Workout() {
       return;
     }
 
+    const storedUser = localStorage.getItem('userName')
+    const newWorkout = { ...workout, userName: storedUser || 'Unknown'};
+
     const currentWorkouts = JSON.parse(localStorage.getItem('workouts')) || [];
-    currentWorkouts.push({...workout })
+    currentWorkouts.push(newWorkout)
     localStorage.setItem('workouts', JSON.stringify(currentWorkouts));
 
     setWorkout({ exerciseType: '', duration: '', notes: '' });
