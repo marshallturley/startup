@@ -120,8 +120,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [X] **All functionality implemented or mocked out** - I implemented functionality features of FitnessBuddy including login, registration, logging workouts, displaying total workouts, and displaying a leaderboard. Backend features included using localStorage for storing login information and workouts. 
+- [X] **Hooks** - I applied React hooks in FitnessBuddy to manage state and events. useState was used in the authentication state, inputs, workouts, dashboard stats, and leaderboard data. useEffect was mainly used to load workouts from localStorage and updating them as the data changed.
 
 ## 🚀 Service deliverable
 

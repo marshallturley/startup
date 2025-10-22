@@ -56,26 +56,18 @@ Using React was very interesting. It makes things much more condensed and simple
 
 ## React Part 2: Reactivity
 
-This was a lot of fun to see it all come together. I had to keep remembering to use React state instead of just manipulating the DOM directly.
+This part of the assignment was a big struggle for me. Implementing useState and useEffect throughout all the pages and figuring out how to make the login authentication work was tough. I want to remember how I made it so the login disappears from the nav bar when logged in, and logout pops up instead.
 
-Handling the toggling of the checkboxes was particularly interesting.
+{authState !== 'Authenticated' && (
+                    <li><NavLink to='login' className="nav-link link-dark text-white">Login</NavLink></li>
+                  )}
 
-```jsx
-<div className="input-group sound-button-container">
-  {calmSoundTypes.map((sound, index) => (
-    <div key={index} className="form-check form-switch">
-      <input
-        className="form-check-input"
-        type="checkbox"
-        value={sound}
-        id={sound}
-        onChange={() => togglePlay(sound)}
-        checked={selectedSounds.includes(sound)}
-      ></input>
-      <label className="form-check-label" htmlFor={sound}>
-        {sound}
-      </label>
-    </div>
-  ))}
-</div>
-```
+{authState === 'Authenticated' && (
+  <li>
+    <NavLink to='login' className="nav-link link-dark text-white" onClick={() => handleAuthChange('', 'Unauthenticated')}>Logout</NavLink>
+  </li>
+)}
+
+Remembering things like onClick or onChange is very beneficial and makes it so the actual functionality of the startup is better.
+
+
