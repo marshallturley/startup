@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { Login } from './login/login';
 import { Dashboard } from './dashboard/dashboard';
 import { Workout } from './workout/workout';
@@ -10,10 +10,11 @@ import { Leaderboard } from './leaderboard/leaderboard';
 
 export default function App() {
   const [authState, setAuthState] = useState(localStorage.getItem('userName') ? 'Authenticated' : 'Unauthenticated');
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (authState === 'Authenticated') {
-      Navigate('/dashboard');
+      navigate('/dashboard');
     }
   }, [authState, navigate]);
 
