@@ -11,13 +11,13 @@ export function StartupUnauthenticated({ onLogin }) {
         async function loginUser() {
             localStorage.setItem('userName', userName);
             onLogin(userName);
-            navigate('./dashboard/dashboard')
+            navigate('/dashboard')
         }
 
         async function createUser() {
             localStorage.setItem('userName', userName);
             onLogin(userName)
-            navigate('./dashboard/dashboard')
+            navigate('/dashboard')
         }
 
         return (
@@ -30,8 +30,8 @@ export function StartupUnauthenticated({ onLogin }) {
                 <div>
                     <input type="password" id="password" placeholder="Password" className="inputs my-2" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
-                <Button type="button" onClick={() => loginUser()} className="btn btn-outline-dark m-2" disabled={!userName || !password}>Login</Button>
-                <Button type="button" onClick={() => createUser()} className="btn btn-outline-dark m-2" disabled={!userName || !password}>Register</Button>
+                <Button type="button" variant="outline-dark" onClick={() => loginUser()} className="btn btn-outline-dark m-2" disabled={!userName || !password}>Login</Button>
+                <Button type="button" variant="outline-dark" onClick={() => createUser()} className="btn btn-outline-dark m-2" disabled={!userName || !password}>Register</Button>
             </form>
             {displayError && <div>{displayError}</div>}
         </main>
