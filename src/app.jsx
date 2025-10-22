@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
@@ -9,6 +9,23 @@ import { Workout } from './workout/workout';
 import { Leaderboard } from './leaderboard/leaderboard';
 
 export default function App() {
+  const [authState, setAuthState] = useState(localStorage.getItem('userName') ? 'Authenticated' : 'Unauthenticated');
+
+  useEffect(() => {
+    if (authState === 'Authenticated') {
+      Navigate('/dashboard');
+    }
+  }, [authState, navigate]);
+
+  function handleAuthChange(userName, state) {
+    if (state === 'Authenticated') {
+      localStorage.setItem('userName', userName);
+    } else {
+      localStorage.removeItem('userName');
+    }
+    setAuthState(state);
+  }
+
   return (
     <BrowserRouter>
         <div className="app-container d-flex flex-column min-vh-100">
@@ -16,7 +33,9 @@ export default function App() {
             <h1 className="text-center pt-4 text-white"><b>FitnessBuddy</b></h1>
             <nav>
                 <menu className="nav justify-content-center">
+                  {authState !== 'Authenticated' && (
                     <li><NavLink to='login' className="nav-link link-dark text-white">Login</NavLink></li>
+                  )}
                     <li><NavLink to='dashboard' className="nav-link link-dark text-white">Dashboard</NavLink></li>
                     <li><NavLink to='leaderboard' className="nav-link link-dark text-white">Leaderboard</NavLink></li>
                 </menu>
@@ -24,8 +43,8 @@ export default function App() {
         </header>
 
         <Routes>
-            <Route path='/' element={<Login />} />
-            <Route path='/login' element={<Login />} />
+            <Route path='/' element={<Login userName={localStorage.getItem('userName')} authState={authState} onAuthChange={handleAuthChange} />} />
+            <Route path='/login' element={<Login userName={localStorage.getItem('userName')} authState={authState} onAuthChange={handleAuthChange} />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/leaderboard' element={<Leaderboard />} />
             <Route path='/workout' element={<Workout />} />
