@@ -10,13 +10,6 @@ import { Leaderboard } from './leaderboard/leaderboard';
 
 export default function App() {
   const [authState, setAuthState] = useState(localStorage.getItem('userName') ? 'Authenticated' : 'Unauthenticated');
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (authState === 'Authenticated') {
-      navigate('/dashboard');
-    }
-  }, [authState, navigate]);
 
   function handleAuthChange(userName, state) {
     if (state === 'Authenticated') {
@@ -39,6 +32,12 @@ export default function App() {
                   )}
                     <li><NavLink to='dashboard' className="nav-link link-dark text-white">Dashboard</NavLink></li>
                     <li><NavLink to='leaderboard' className="nav-link link-dark text-white">Leaderboard</NavLink></li>
+
+                    {authState === 'Authenticated' && (
+                      <li>
+                        <NavLink to='login' className="nav-link link-dark text-white" onClick={() => handleAuthChange('', 'Unauthenticated')}>Logout</NavLink>
+                      </li>
+                    )}
                 </menu>
             </nav>
         </header>

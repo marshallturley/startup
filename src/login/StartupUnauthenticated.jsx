@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import { MessageDialog } from './messageDialog';
+import { useNavigate } from 'react-router-dom';
 
 export function StartupUnauthenticated({ onLogin }) {
-        const [userName, setUsername] = React.useState(propTypes.userName);
+        const [userName, setUsername] = React.useState('');
         const [password, setPassword] = React.useState('');
         const [displayError, setDisplayError] = React.useState(null);
+        const navigate = useNavigate();
 
         async function loginUser() {
             localStorage.setItem('userName', userName);
-            propTypes.onLogin(userName);
+            onLogin(userName);
+            navigate('./dashboard/dashboard')
         }
 
         async function createUser() {
             localStorage.setItem('userName', userName);
-            propTypes.onLogin(userName)
+            onLogin(userName)
+            navigate('./dashboard/dashboard')
         }
 
         return (
@@ -22,15 +25,15 @@ export function StartupUnauthenticated({ onLogin }) {
             <h2 className="text-center">Please Login or Register Here</h2>
             <form className="text-center">
                 <div>
-                    <input type="text" id="username" placeholder="Username" className="inputs my-2" onChange={(e) => setUsername(e.target.value)}/>
+                    <input type="text" id="username" placeholder="Username" className="inputs my-2" value={userName} onChange={(e) => setUsername(e.target.value)}/>
                 </div>
                 <div>
-                    <input type="password" id="password" placeholder="Password" className="inputs my-2" onChange={(e) => setPassword(e.target.value)}/>
+                    <input type="password" id="password" placeholder="Password" className="inputs my-2" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <Button type="button" onClick={() => loginUser()} className="btn btn-outline-dark m-2" disabled={!userName || !password}>Login</Button>
                 <Button type="button" onClick={() => createUser()} className="btn btn-outline-dark m-2" disabled={!userName || !password}>Register</Button>
             </form>
-            <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
+            {displayError && <div>{displayError}</div>}
         </main>
         )
     }
