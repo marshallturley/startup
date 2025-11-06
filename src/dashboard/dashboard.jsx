@@ -48,7 +48,7 @@ export function Dashboard() {
         <section className="text-center mb-5">
             <h3>Current Weather</h3>
             <div className="my-2">Temperature: {weather.temperature}</div>
-            <div className="my-2">Precipitation: {weather.precipitation}</div>
+            <div className="my-2">Precipitation (in Inches): {weather.precipitation}</div>
         </section>
         <section className="text-center mb-5">
             <h3 className="mt-2">{userName}'s Total Workouts Logged</h3>
