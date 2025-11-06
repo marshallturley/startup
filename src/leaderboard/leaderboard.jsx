@@ -2,26 +2,26 @@ import React, { useState, useEffect } from 'react';
 import './leaderboard.css'
 
 export function Leaderboard() {
-    const [leaderboard, setLeaderboard] = useState([]);
+    const [leaderboard, setLeaderboard] = React.useState([]);
 
-    useEffect(() => {
-        const allWorkouts = JSON.parse(localStorage.getItem('workouts')) || [];
-        
-        const userStats = {};
-        allWorkouts.forEach(w => {
-            const user = w.userName || 'Unknown';
-            if (!userStats[user]) {
-                userStats[user] = { totalWorkouts: 0, totalTime: 0 };
-            }
-            userStats[user].totalWorkouts += 1;
-            userStats[user].totalTime += Number(w.duration) || 0;
-        })
-
-        const sortedLeaderboard = Object.entries(userStats)
-            .map(([userName, stats]) => ({ userName, ...stats}))
-            .sort((a,b) => b.totalWorkouts - a.totalWorkouts);
-
-        setLeaderboard(sortedLeaderboard);
+    React.useEffect(() => {
+        fetch('/api/workouts')
+            .then((response) => response.json())
+            .then((workouts) => {
+                const userStats = {};
+                for (const w of workouts) {
+                    const user = w.userName || 'Unknown';
+                    if (!userStats[user]) {
+                        userStats[user] = { totalWorkouts: 0, totalTime: 0}
+                    }
+                    userStats[user].totalWorkouts++;
+                    userStats[user].totalTime += Number(w.duration) || 0;
+                }
+                const sorted = Object.entries(userStats)
+                    .map(([userName, stats]) => ({ userName, ...stats }))
+                    .sort((a,b) => b.totalTime - a.totalTime);
+                setLeaderboard(sorted);    
+            });
     }, []);
 
   return (
