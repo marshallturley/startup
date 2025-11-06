@@ -22,8 +22,18 @@ export function Dashboard() {
     }, []);
 
     useEffect(() => {
-        const storedWorkouts = JSON.parse(localStorage.getItem('workouts')) || [];
-        setTotalWorkouts(storedWorkouts.length);
+        fetch('/api/workouts')
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to fetch workouts');
+                return response.json();
+            })
+            .then(workouts => {
+                setTotalWorkouts(workouts.length);
+            })
+            .catch(error => {
+                console.error(error);
+                setTotalWorkouts(0);
+            })
     }, []);
 
     return (
