@@ -21,12 +21,26 @@ export function Workout() {
     const storedUser = localStorage.getItem('userName')
     const newWorkout = { ...workout, userName: storedUser || 'Unknown'};
 
-    const currentWorkouts = JSON.parse(localStorage.getItem('workouts')) || [];
-    currentWorkouts.push(newWorkout)
-    localStorage.setItem('workouts', JSON.stringify(currentWorkouts));
-
-    setWorkout({ exerciseType: '', duration: '', notes: '' });
-    setMessage('Workout logged successfully!');
+    fetch('/api/workouts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newWorkout),
+    })
+    .then(response => {
+      if (!response.ok) {
+        return response.json().then(error => {
+          throw new Error(error.msg || 'Faled to save workout');
+        });
+      }
+      return response.json();
+    })
+    .then(() => {
+      setWorkout({ exerciseType: '', duration: '', notes: '' });
+      setMessage('Workout logged successfully!');
+    })
+    .catch(err => {
+      setMessage(`Error: ${err.message}`);
+    });
   }
 
   return (
