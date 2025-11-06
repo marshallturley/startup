@@ -14,7 +14,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 let users = []
-let scores = []
+let workouts = []
 
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
@@ -62,6 +62,44 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
+apiRouter.get('/workouts', verifyAuth, (_req, res) => {
+  res.send(workouts);
+});
+
+apiRouter.post('/workouts', verifyAuth, (req, res) => {
+  workouts = updateWorkouts(req.body);
+  res.send(workouts);
+});
+
+app.use(function (err, req, res, next) {
+  res.status(500).send({ type: err.name, message: err.message });
+});
+
+app.use((_req, res) => {
+  res.sendFile('index.html', { root: 'public' });
+});
+
+
+function updateWorkouts(newWorkout) {
+  let found = false;
+  for (const [i, prevWorkout] of workouts.entries()) {
+    if (newWorkout.workout > prevWorkout.workout) {
+      workouts.splice(i, 0, newWorkout);
+      found = true;
+      break;
+    }
+  }
+
+  if (!found) {
+    workouts.push(newWorkout);
+  }
+
+  if (workouts.length > 10) {
+    workouts.length = 10;
+  }
+
+  return workouts;
+}
 
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
@@ -81,3 +119,15 @@ async function findUser(field, value) {
 
   return users.find((u) => u[field] === value);
 }
+
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+  });
+}
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
