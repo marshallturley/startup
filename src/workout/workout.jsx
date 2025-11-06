@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './workout.css'
 
 export function Workout() {
+  const navigate = useNavigate();
   const [message, setMessage] = useState('');
   const [workout, setWorkout] = useState({
     exerciseType: '', duration: '', notes: '',
@@ -37,6 +39,7 @@ export function Workout() {
     .then(() => {
       setWorkout({ exerciseType: '', duration: '', notes: '' });
       setMessage('Workout logged successfully!');
+      navigate('/dashboard');
     })
     .catch(err => {
       setMessage(`Error: ${err.message}`);
