@@ -70,4 +70,6 @@ This part of the assignment was a big struggle for me. Implementing useState and
 
 Remembering things like onClick or onChange is very beneficial and makes it so the actual functionality of the startup is better.
 
+## Service
 
+The service portion of this assignment was a tough one for me. Remember the backend is from Node.js/Express and the frontend is React. API points are the main way that the backend and frontend communicate. Cookies are used in the user authentication process to allow access to restricted API routes. Third party APIs sometimes need an API key to access them properly. React files are served as static files through the Express middleware in order to deploy properly.

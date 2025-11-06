@@ -127,12 +127,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [X] **Node.js/Express HTTP service** - I implemented the backend service using Express. I set up routes to handle user authentication. (register, login, logout) The service listens on port 4000 and manages in-memory data for users and workouts.
+- [X] **Static middleware for frontend** - I configured Express to serve the frontend static files from the public folder using Express's static middleware. This allows the React frontend to be served alongside the API.
+- [X] **Calls to third party endpoints** - I used the free Open-Meteo API to fetch and display the current temperature and precipitation data for Provo. I put this information on the dashboard. This API needs no API key or backend proxy to access.
+- [X] **Backend service endpoints** - I created backend API endpoints under /api for user authentication and workout management. These endpoints include authentication verification using cookies.
+- [X] **Frontend calls service endpoints** - The React frontend calls backend API endpoints to help users login and create an account. There are also endpoints that help the user log new workouts and fetch leaderboard data. 
+- [X] **Supports registration, login, logout, and restricted endpoint** - The backend supports user registration, login, and logout functionality with cookie-based authentication. Certain protected API routes (like posting workouts) require a valid login session.
 
 
 ## 🚀 DB deliverable
