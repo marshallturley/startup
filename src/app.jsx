@@ -20,6 +20,18 @@ export default function App() {
     setAuthState(state);
   }
 
+  function logoutUser() {
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+    })
+      .catch(() => {
+      })
+      .finally(() => {
+        localStorage.removeItem('userName');
+        handleAuthChange('', 'Unauthenticated');
+      });
+  }
+
   return (
     <BrowserRouter>
         <div className="app-container d-flex flex-column min-vh-100">
@@ -35,7 +47,7 @@ export default function App() {
 
                     {authState === 'Authenticated' && (
                       <li>
-                        <NavLink to='login' className="nav-link link-dark text-white" onClick={() => handleAuthChange('', 'Unauthenticated')}>Logout</NavLink>
+                        <NavLink to='/login' className="nav-link link-dark text-white" onClick={logoutUser}>Logout</NavLink>
                       </li>
                     )}
                 </menu>
