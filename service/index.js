@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 const app = express();
+const DB = require('./database.js');
 
 const authCookieName = 'token';
 
@@ -12,9 +13,6 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(express.static('public'));
-
-let users = []
-let workouts = []
 
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
@@ -36,6 +34,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
+      await DB.updateUser(user);
       setAuthCookie(res, user.token);
       res.send({ email: user.email });
       return;
@@ -48,6 +47,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
     delete user.token;
+    await DB.updateUser(user);
   }
   res.clearCookie(authCookieName);
   res.status(204).end();
@@ -62,13 +62,14 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-apiRouter.get('/workouts', verifyAuth, (_req, res) => {
+apiRouter.get('/workouts', verifyAuth, async (_req, res) => {
+  const workouts = await DB.getData();
   res.send(workouts);
 });
 
-apiRouter.post('/workouts', verifyAuth, (req, res) => {
-  workouts = updateWorkouts(req.body);
-  res.send(workouts);
+apiRouter.post('/workouts', verifyAuth, async (req, res) => {
+  await DB.addData(req.body);
+  res.status(201).send({ msg: 'Workout added' });
 });
 
 app.use(function (err, req, res, next) {
@@ -80,44 +81,22 @@ app.use((_req, res) => {
 });
 
 
-function updateWorkouts(newWorkout) {
-  let found = false;
-  for (const [i, prevWorkout] of workouts.entries()) {
-    if (newWorkout.workout > prevWorkout.workout) {
-      workouts.splice(i, 0, newWorkout);
-      found = true;
-      break;
-    }
-  }
-
-  if (!found) {
-    workouts.push(newWorkout);
-  }
-
-  if (workouts.length > 10) {
-    workouts.length = 10;
-  }
-
-  return workouts;
-}
-
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
 
-  const user = {
-    email: email,
-    password: passwordHash,
-    token: uuid.v4(),
-  };
-  users.push(user);
-
+  const user = { email, password: passwordHash, token: uuid.v4() };
+  await DB.addUser(user);
   return user;
 }
 
 async function findUser(field, value) {
   if (!value) return null;
-
-  return users.find((u) => u[field] === value);
+  if (field === 'email') {
+    return DB.getUserByEmail(value);
+  } else if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return null;
 }
 
 function setAuthCookie(res, authToken) {
