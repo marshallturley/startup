@@ -5,7 +5,7 @@ export function Leaderboard() {
     const [leaderboard, setLeaderboard] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('/api/workouts')
+        fetch('/api/workouts', { credentials: 'include' })
             .then((response) => response.json())
             .then((workouts) => {
                 const userStats = {};
