@@ -139,8 +139,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [X] **Stores data in MongoDB** - I replaced local storage arrays with MongoDB collections to store and fetch workout data. Backend API routes work well with MongoDB to add and retrieve workouts.
+- [X] **Stores credentials in MongoDB** - User credentials are securely stored in a MongoDB collection, with the passwords being hashed to ensure security. This system replaces the previous locally stored memory user management system.
 
 ## 🚀 WebSocket deliverable
 

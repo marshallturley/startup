@@ -73,3 +73,7 @@ Remembering things like onClick or onChange is very beneficial and makes it so t
 ## Service
 
 The service portion of this assignment was a tough one for me. Remember the backend is from Node.js/Express and the frontend is React. API points are the main way that the backend and frontend communicate. Cookies are used in the user authentication process to allow access to restricted API routes. Third party APIs sometimes need an API key to access them properly. React files are served as static files through the Express middleware in order to deploy properly.
+
+## Database
+
+The database portion of this assignment was straightforward and helpful to feel like my startup is really working well now. MongoDB is the service used here to store user credentials and workout data. dbConfig.json is the file used to store the database connection details. bcrypt hashs user passwords to make them more secure. UUID session tokens are stored in the database to help manage authentication. Install new dependencies like mongodb and bcryptjs in the backend to make sure it is functional.
