@@ -28,7 +28,9 @@ export function Dashboard() {
     }, []);
 
     useEffect(() => {
-        fetch('/api/workouts')
+        fetch('/api/workouts', {
+            credentials: 'include',
+        })
             .then(response => {
                 if (!response.ok) throw new Error('Failed to fetch workouts');
                 return response.json();
