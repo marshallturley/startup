@@ -15,6 +15,7 @@ export function StartupUnauthenticated({ onLogin }) {
                 headers: {
                 'Content-type': 'application/json; charset=UTF-8',
                 },
+                credentials: 'include',
             });
             if (response?.status === 200) {
                 localStorage.setItem('userName', userName);
