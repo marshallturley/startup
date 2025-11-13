@@ -27,6 +27,7 @@ export function Workout() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newWorkout),
+      credentials: 'include',
     })
     .then(response => {
       if (!response.ok) {
