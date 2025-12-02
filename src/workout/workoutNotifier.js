@@ -38,7 +38,14 @@ class WorkoutNotifier {
 
     broadcastEvent(from, type, value) {
         const event = new WorkoutEventMessage(from, type, value);
-        this.socket.send(JSON.stringify(event));
+        if (this.socket.readyState === WebSocket.OPEN) {
+            this.socket.send(JSON.stringify(event));
+        } else {
+            this.socket.addEventListener('open', () => {
+                this.socket.send(JSON.stringify(event));
+            }, { once: true });
+        }
+        
     }
 
     addHandler(handler) {

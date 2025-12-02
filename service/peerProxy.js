@@ -1,34 +1,37 @@
 const { WebSocketServer } = require('ws');
 
-const socketServer = new WebSocketServer({ server: httpServer, path: '/ws' });
+function peerProxy(httpServer) {
 
-socketServer.on('connection', (socket) => {
-    socket.isAlive = true;
-});
+    const socketServer = new WebSocketServer({ server: httpServer, path: '/ws' });
 
-socket.on('message', (data) => {
-    socketServer.clients.forEach((client) => {
-        if (client !== socket && client.readyState === client.OPEN) {
-            client.send(data)
-        }
+    socketServer.on('connection', (socket) => {
+        socket.isAlive = true;
+
+        socket.on('message', (data) => {
+            socketServer.clients.forEach((client) => {
+                if (client !== socket && client.readyState === client.OPEN) {
+                    client.send(data)
+                }
+            });
+        });
+
+        socket.on('pong', () => {
+            socket.isAlive = true;
+        });
     });
-});
 
-socket.on('pong', () => {
-    socket.isAlive = true;
-});
+    const interval = setInterval(() => {
+        socketServer.clients.forEach((client) => {
+            if (client.isAlive === false) return client.terminate();
 
-const interval = setInterval(() => {
-    socketServer.clients.forEach((client) => {
-        if (client.isAlive === false) return client.terminate();
+            client.isAlive = false;
+            client.ping();
+        });
+    }, 10000);
 
-        client.isAlive = false;
-        client.ping();
+    socketServer.on('close', () => {
+        clearInterval(interval);
     });
-}, 10000);
-
-socketServer.on('close', () => {
-    clearInterval(interval);
-});
+}
 
 module.exports = { peerProxy };
