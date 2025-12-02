@@ -1,3 +1,5 @@
+const { WebSocketServer } = require('ws');
+
 const socketServer = new WebSocketServer({ server: httpServer, path: '/ws' });
 
 socketServer.on('connection', (socket) => {
