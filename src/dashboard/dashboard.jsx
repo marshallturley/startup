@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { WorkoutNotifications } from './notifications';
 import './dashboard.css';
 
 export function Dashboard() {
@@ -47,6 +48,9 @@ export function Dashboard() {
     return (
     <main className="justify-content-start">
         <h2 className="mt-3 mb-5"><b>Welcome, {userName}</b></h2>
+
+        <WorkoutNotifications userName={userName} />
+
         <section className="text-center mb-5">
             <h3>Current Weather</h3>
             <div className="my-2">Temperature: {weather.temperature}</div>

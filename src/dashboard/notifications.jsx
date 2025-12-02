@@ -29,7 +29,7 @@ export function WorkoutNotifications(props) {
 
             return (
                 <div key={i} className="event">
-                    <span className="user-event">{event.from}</span> {message}
+                    <span className="user-event">{event.from.split('@')[0]}</span> {message}
                 </div>
             );
         });

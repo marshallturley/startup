@@ -16,7 +16,7 @@ class WorkoutNotifier {
     handlers = [];
 
     constructor() {
-        let prot = window.location.port;
+        const port = window.location.port;
         const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
         this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
 
@@ -46,16 +46,13 @@ class WorkoutNotifier {
     }
 
     removeHandler(handler) {
-    this.handlers.filter((h) => h !== handler);
+    this.handlers = this.handlers.filter((h) => h !== handler);
     }
 
     receiveEvent(event) {
     this.events.push(event);
-
-    this.events.forEach((e) => {
-        this.handlers.forEach((handler) => {
-            handler(e);
-        });
+    this.handlers.forEach((handler) => {
+            handler(event);
     });
     }
 }
