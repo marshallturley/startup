@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { WorkoutEvent, WorkoutNotifierInstance } from './workoutNotifier';
 import './workout.css'
 
 export function Workout() {
@@ -40,6 +41,14 @@ export function Workout() {
     .then(() => {
       setWorkout({ exerciseType: '', duration: '', notes: '' });
       setMessage('Workout logged successfully!');
+
+      WorkoutNotifierInstance.broadcastEvent(
+        storedUser, WorkoutEvent.WorkoutLogged,
+        {
+          description: `$workout.exerciseType} for ${workout.duration} minutes`
+        }
+      );
+
       navigate('/dashboard');
     })
     .catch(err => {
