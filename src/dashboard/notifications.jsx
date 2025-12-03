@@ -1,5 +1,6 @@
 import React from "react";
 import { WorkoutEvent, WorkoutNotifierInstance } from "../workout/workoutNotifier";
+import './notifications.css'
 
 export function WorkoutNotifications(props) {
     const userName = props.userName
@@ -17,28 +18,35 @@ export function WorkoutNotifications(props) {
         };
     }, []);
 
+    function handleClose(index) {
+        setEvents((prev) => prev.filter((_,i) => i !== index));
+    }
+
     function createMessageArray() {
         return events.map((event,i) => {
             let message = 'Unknown event';
 
             if (event.type === WorkoutEvent.WorkoutLogged) {
-                message = `${event.from} logged: "${event.value.description}"`;
+                message = `logged: "${event.value.description}"`;
             } else if (event.type === WorkoutEvent.System) {
+                if (event.value.msg === "connected" || event.value.msg === "system connected") {
+                    return null
+                }
                 message = event.value.msg;
             }
 
             return (
-                <div key={i} className="event">
-                    <span className="user-event">{event.from.split('@')[0]}</span> {message}
+                <div key={i} className="box">
+                    <div className="box-close" onClick={() => handleClose(i)}>x</div>
+                    <span className="box-message">{event.from.split('@')[0]}</span> {message}
                 </div>
             );
         });
     }
 
     return (
-        <div className="workout-notifications">
-            <h3>Workout Notifications</h3>
-            <div id="notifications-list">{createMessageArray()}</div>
+        <div className="workout-box-container">
+            {createMessageArray()}
         </div>
     );
 }

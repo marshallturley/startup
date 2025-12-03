@@ -45,7 +45,7 @@ export function Workout() {
       WorkoutNotifierInstance.broadcastEvent(
         storedUser, WorkoutEvent.WorkoutLogged,
         {
-          description: `$workout.exerciseType} for ${workout.duration} minutes`
+          description: `${workout.exerciseType} for ${workout.duration} minutes`
         }
       );
 
