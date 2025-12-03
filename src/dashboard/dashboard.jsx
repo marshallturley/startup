@@ -29,7 +29,9 @@ export function Dashboard() {
     }, []);
 
     useEffect(() => {
-        fetch('/api/workouts', {
+        if (!userName) return;
+        
+        fetch(`/api/workouts?userName=${encodeURIComponent(userName)}`, {
             credentials: 'include',
         })
             .then(response => {
@@ -43,7 +45,7 @@ export function Dashboard() {
                 console.error(error);
                 setTotalWorkouts(0);
             })
-    }, []);
+    }, [userName]);
 
     return (
     <main className="justify-content-start">
