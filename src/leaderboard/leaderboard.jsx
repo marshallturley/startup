@@ -5,12 +5,12 @@ export function Leaderboard() {
     const [leaderboard, setLeaderboard] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('/api/workouts', { credentials: 'include' })
+        fetch('/api/workouts/all', { credentials: 'include' })
             .then((response) => response.json())
             .then((workouts) => {
                 const userStats = {};
                 for (const w of workouts) {
-                    const user = w.userName || 'Unknown';
+                    const user = w.userName || w.userEmail || 'Unknown';
                     if (!userStats[user]) {
                         userStats[user] = { totalWorkouts: 0, totalTime: 0}
                     }

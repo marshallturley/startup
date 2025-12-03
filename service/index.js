@@ -57,6 +57,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
 const verifyAuth = async (req, res, next) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
+    req.user = user;
     next();
   } else {
     res.status(401).send({ msg: 'Unauthorized' });
@@ -64,12 +65,28 @@ const verifyAuth = async (req, res, next) => {
 };
 
 apiRouter.get('/workouts', verifyAuth, async (_req, res) => {
-  const workouts = await DB.getData();
-  res.send(workouts);
+  try {
+    const userName = _req.query.userName;
+    const workouts = await DB.getData({ userName });
+    res.send(workouts);
+  } catch (err) {
+    res.status(500).send({ msg: 'Failed to fetch workouts' });
+  }
 });
 
+apiRouter.get('/workouts/all', verifyAuth, async (req, res) => {
+  const allWorkouts = await DB.getData();
+  res.send(allWorkouts);
+})
+
 apiRouter.post('/workouts', verifyAuth, async (req, res) => {
-  await DB.addData(req.body);
+  const userName = req.body.userName;
+  const workout = {
+    ...req.body,
+    userName,
+  };
+  
+  await DB.addData(workout);
   res.status(201).send({ msg: 'Workout added' });
 });
 

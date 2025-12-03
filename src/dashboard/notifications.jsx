@@ -38,7 +38,7 @@ export function WorkoutNotifications(props) {
             return (
                 <div key={i} className="box">
                     <div className="box-close" onClick={() => handleClose(i)}>x</div>
-                    <span className="box-message">{event.from.split('@')[0]}</span> {message}
+                    <span className="box-message">{event.from}</span> {message}
                 </div>
             );
         });
