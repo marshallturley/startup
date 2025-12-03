@@ -146,8 +146,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [X] **Backend listens for WebSocket connection** - I implemented a WebSocket server that listens for connections and handles broadcasting the logging of new workout events to connected clients/users.
+- [X] **Frontend makes WebSocket connection** - I created a WorkoutNotifier class on the frontend that establishes and manages a WebSocket connection to the backend.
+- [X] **Data sent over WebSocket connection** - I broadcasted workout logging events from the frontend to the backend and to other connected clients/users via WebSocket.
+- [X] **WebSocket data displayed** - I developed the WorkoutNotifications component to display real-time notifications when a different user logs a new workout.
+- [X] **Application is fully functional** - The application successfully logs workouts, updates the leaderboard, supports user login/authentication, and displays real-time notifications for workout events across users.

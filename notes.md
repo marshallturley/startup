@@ -77,3 +77,7 @@ The service portion of this assignment was a tough one for me. Remember the back
 ## Database
 
 The database portion of this assignment was straightforward and helpful to feel like my startup is really working well now. MongoDB is the service used here to store user credentials and workout data. dbConfig.json is the file used to store the database connection details. bcrypt hashs user passwords to make them more secure. UUID session tokens are stored in the database to help manage authentication. Install new dependencies like mongodb and bcryptjs in the backend to make sure it is functional.
+
+## WebSocket
+
+The WebSocket portion of my startup was interesting, as it seemed simple enough but gave me some problems. The backend maintains a WebSocket server to broadcast the new new workout events, and the frontend establishes a connection that receives and displays updates in real-time. This allows users to see notifications of other users logging workouts. It reminded me of some css and react formatting principles that I had forgotten, but I am glad this assignment allowed me to refresh my memory and give my startup the clean finish that it has.
